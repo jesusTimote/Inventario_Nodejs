@@ -1,0 +1,39 @@
+{{#each success}}
+{{success}}
+<script>
+    Swal.fire({
+        title: '{{title}}',
+        text: "{{text}}",
+        icon: '{{icon}}',
+        showConfirmButton: {{ showConfirmButton }},
+         
+      //  timer: '{{timer}}',
+     })
+</script>
+{{/each}}
+
+
+{{#each success_msg}}
+{{success_msg}}
+<script>
+    Swal.fire({
+        title: '{{title}}',
+        text: "{{text}}",
+        icon: '{{icon}}',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        showCancelButton: '{{showCancelButton}}',
+        confirmButtonText: '{{confirmButtonText}}',
+    }).then((result) => {
+        if (result.isConfirmed) {
+          //  window.location=`/user/delete/{{id}}?_method=DELETE`
+            {{opcion}}
+            console.log('{{opcion}}') 
+            Swal.fire({
+                title: 'Eliminado!',
+                icon:'success'
+            })
+        }
+    })
+</script>
+{{/each}}

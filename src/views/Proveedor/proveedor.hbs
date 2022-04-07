@@ -1,0 +1,294 @@
+<link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+<div style="">
+    <button data-target="#demo-modal-proveedor" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add"></i>
+        Agregar
+    </button>
+</div>
+
+<br />
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Proveedor</th>
+            <th>Dni</th>
+            <th>Ruc</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Estado</th>
+            <th>ACCESO</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+</table>
+
+{{!-- FORMULARIO DE PROVEEDOR ADD --}}
+<div class="modal animated lightSpeedIn" id="demo-modal-proveedor" role="dialog" tabindex="-1"
+    aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                <h5 class="modal-title"><i class="icon-pencil7"></i> &nbsp; <span class="title-form">Ingresar
+                        Proveedor</span></h5>
+            </div>
+
+            <form action="/views/proveedor/add" method="post" autocomplete="off" class="form-validate-jquery"
+                id="frmModal">
+                <div class="modal-body" id="modal-container">
+
+                    <div class="alert alert-info alert-styled-left text-blue-800 content-group">
+                        <span class="text-semibold">Estimado usuario</span>
+                        Los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+                        <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Codigo</label>
+                                <input type="text" id="txtCodigo" name="codigo" placeholder="AUTOGENERADO"
+                                    class="form-control" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Proveedor <span class="text-danger">*</span></label>
+                                <input type="text" id="proveedor" name="proveedor"
+                                    placeholder="EJ. DISTRIBUIDORA BONILLA" class="form-control"
+                                    style="text-transform:uppercase;" aria-required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Dni <span class="text-danger">*</span></label>
+                                <input type="text" id="dni" name="dni" placeholder="EJ. 46591170" class="form-control"
+                                    style="text-transform:uppercase;">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Ruc <span class="text-danger">*</span></label>
+                                <input type="text" id="ruc" name="ruc" placeholder="EJ. 10465911706"
+                                    class="form-control" style="text-transform:uppercase;" aria-required="true">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Correo <span class="text-danger">*</span></label>
+                                <input type="text" id="correo" name="correo" placeholder="EJ. 70145389"
+                                    class="form-control" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Telefono <span class="text-danger">*</span></label>
+                                <input type="text" id="telefono" name="telefono" placeholder="EJ. 054628824"
+                                    class="form-control" style="text-transform:uppercase;">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="col-md-12">
+                                    <label for="">Estado</label>
+                                    <div class="input-group" style="display: block;">
+                                        <select data-placeholder="Choose a Country..." id="demo-chosen-select"
+                                            name="estado" class="form-control ">
+                                            <option value="Activo">Activo </option>
+                                            <option value="Inactivo">Inactivo </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="btnEditar" type="submit" class="btn btn-warning" style="display: none;">Editar</button>
+                    <button type="reset" class="btn btn-default" id="reset" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{!-- FORMULARIO DE PROVEEDOR EDIT --}}
+<div class="modal animated lightSpeedIn" id="demo-modal-editProveedor" role="dialog" tabindex="-1"
+    aria-labelledby="demo-default-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><i class="pci-cross pci-circle"></i></button>
+                <h5 class="modal-title"><i class="icon-pencil7"></i> &nbsp; <span class="title-form">Actualiza
+                        Proveedor</span></h5>
+            </div>
+
+            <form action="/views/proveedor/editar-Proveedor" method="post" autocomplete="off"
+                class="form-validate-jquery" id="frmModal">
+                <div class="modal-body" id="modal-container">
+
+                    <div class="alert alert-info alert-styled-left text-blue-800 content-group">
+                        <span class="text-semibold">Estimado usuario</span>
+                        Los campos remarcados con <span class="text-danger"> * </span> son necesarios.
+                        <button class="close" data-dismiss="alert"><i class="pci-cross pci-circle"></i></button>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Codigo</label>
+                                <input type="text" id="txtCodigo_edit" 
+                                name="codigo" placeholder="AUTOGENERADO" class="form-control"
+                                    style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Proveedor <span class="text-danger">*</span></label>
+                                <input type="text" id="proveedor_edit" name="proveedor"
+                                    placeholder="EJ. DISTRIBUIDORA BONILLA" class="form-control"
+                                    style="text-transform:uppercase;" aria-required="true">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Dni <span class="text-danger">*</span></label>
+                                <input type="text" id="dni_edit" name="dni" placeholder="EJ. 46591170"
+                                    class="form-control" style="text-transform:uppercase;">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>Ruc <span class="text-danger">*</span></label>
+                                <input type="text" id="ruc_edit" name="ruc" placeholder="EJ. 10465911706"
+                                    class="form-control" style="text-transform:uppercase;" aria-required="true">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Correo <span class="text-danger">*</span></label>
+                                <input type="text" id="correo_edit" name="correo" placeholder="EJ. 70145389"
+                                    class="form-control" style="text-transform:uppercase;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Telefono <span class="text-danger">*</span></label>
+                                <input type="text" id="telefono_edit" name="telefono" placeholder="EJ. 054628824"
+                                    class="form-control" style="text-transform:uppercase;">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="col-md-12">
+                                    <label for="">Estado</label>
+                                    <div class="input-group" style="display: block;">
+                                        <select data-placeholder="Choose a Country..." id="estado_edit" name="estado"
+                                            class="form-control ">
+                                            <option value="Activo">Activo </option>
+                                            <option value="Inactivo">Inactivo </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnGuardar" type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="btnEditar" type="submit" class="btn btn-warning" style="display: none;">Editar</button>
+                    <button type="reset" class="btn btn-default" id="reset" data-dismiss="modal">Cerrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+    $("#example").DataTable({
+        responsive: true,
+        processing: true,
+        destroy: true,
+        ajax: {
+            url: "/views/proveedor/list",
+            dataSrc: ""
+        },
+        columns: [
+            { data: "codigo" },
+            { data: "proveedor" },
+            { data: "dni" },
+            { data: "ruc" },
+            { data: "correo" },
+            { data: "telefono" },
+            { data: "estado" },
+            {
+                data: null,
+                render(data) {
+                    return (
+                        " <a  id='btnEditarProveedor' data-target='' data-toggle='modal' "
+                        + " class='btn btn-primary add-tooltip demo-psi-pen-5 icon-lg' data-container='body' "
+                        + " data-placement='top' data-original-title='Editar' style='height: 34px;'> "
+                        + "</a>"
+                        + "|"
+                        + ' <a href="/views/proveedor/delete-Proveedor/'+data.codigo+'" class="btn btn-danger add-tooltip" data-toggle="tooltip" '
+                        + " data-container='body' data-placement='top' data-original-title='Eliminar'><i "
+                        + " class='demo-pli-trash icon-lg'></i>"
+                        + "</a>"
+
+                    )
+                }
+            }
+        ],
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        pageLength: 5,
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
+    });
+
+</script>

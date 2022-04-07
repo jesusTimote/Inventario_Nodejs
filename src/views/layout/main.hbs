@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema Inventario</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!--Bootstrap Stylesheet -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Nifty Premium Icon -->
+    <link href="/css/nifty-demo-icons.min.css" rel="stylesheet" />
+    <!--Pace - Page Load Progress Par -->
+    <link href="/css/pace.min.css" rel="stylesheet" />
+
+    <!--Animate.css-->
+    <link href="/css/animate.min.css" rel="stylesheet" />
+
+    <!--Nifty Stylesheet -->
+    <link href="/css/nifty.min.css" rel="stylesheet" />
+
+
+  
+
+</head>
+
+<body>
+
+    <div id="container" class="effect aside-float aside-bright mainnav-lg  navbar-fixed footer-fixed">
+        {{> success_msg}}
+        {{> error_msg}}
+        {{> header}}
+
+        <div class="boxed">
+            <!--CONTENT CONTAINER-->
+            <!--===================================================-->
+            <div id="content-container">
+                <div id="page-head">
+
+                    <!--Page Title-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <div id="page-title">
+                        <h1 class="page-header text-overflow">{{titulo}}</h1>
+                    </div>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End page title-->
+
+                    <!--Breadcrumb-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <ol class="breadcrumb">
+                        <li><a href="#"><i class="demo-pli-home"></i></a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li class="active">{{titulo}}</li>
+                    </ol>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End breadcrumb-->
+                </div>
+                <!--Page content-->
+                <!--===================================================-->
+                <div id="page-content">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>{{descripcion}}</strong></h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            {{{ body}}}
+                        </div>
+                    </div>
+                </div>
+                <!--===================================================-->
+                <!--End page content-->
+            </div>
+            <!--===================================================-->
+            <!--END CONTENT CONTAINER-->
+
+
+
+            {{> navbar}}
+        </div>
+        {{> footer}}
+
+    </div>
+    <!--jQuery -->
+    {{!--
+    <script src="/js/jquery.min.js"></script> --}}
+
+
+    <!--BootstrapJS [ RECOMMENDED ]-->
+    <script src="/js/bootstrap.min.js"></script>
+    <!--NiftyJS [ RECOMMENDED ]-->
+    <script src="/js/nifty.min.js"></script>
+    <!--=================================================-->
+    <!--FooTable -->
+    <script src="/js/footable.all.min.js"></script>
+    <!--FooTable Example -->
+    <script src="/js/tables-footable.js"></script>
+    <!--Bootstrap Validator -->
+    <script src="/js/bootstrapValidator.min.js"></script>
+    <!--Masked Input -->
+    <script src="/js/jquery.maskedinput.min.js"></script>
+    <!--Form validation -->
+    <script src="/js/form-validation.js"></script>
+    <script src="/js/validate.js"></script>
+   
+
+
+</body>
+
+</html>

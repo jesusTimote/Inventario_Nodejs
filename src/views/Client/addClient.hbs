@@ -1,0 +1,328 @@
+<link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<div style="">
+    <button data-target="#demo-default-modal" data-toggle="modal" class="btn btn-primary"><i class="demo-pli-add"></i>
+        Agregar
+    </button>
+</div>
+<br />
+<table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>DNI</th>
+            <th>TELEFONO</th>
+            <th>CORREO</th>
+            <th>ACCESO</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+
+</table>
+
+<form action="/add/client" method="post" class="form-horizontal">
+    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal animated lightSpeedIn" id="demo-default-modal" role="dialog" tabindex="-1"
+        aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i
+                            class="pci-cross pci-circle"></i></button>
+                    <h4 class="modal-title">Client Register</h4>
+                </div>
+                <!--Modal body-->
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true"><i
+                                    class="demo-pli-male ml-5" style="padding: 0 10px 0 0;"></i>Contacto</a>
+                        </li>
+                        <li class=""><a href="#timeline" data-toggle="tab" aria-expanded="false">
+                                <i class="demo-pli-home" style="padding: 0 10px 0 0;"></i>Empresa</a>
+                        </li>
+
+                    </ul>
+                    <!--Tabs Content-->
+                    <div class="tab-content">
+                        <!--Tab activity-->
+                        <div id="activity" class="tab-pane fade active in">
+                            <p class="text-main text-semibold"></p>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-hor-inputemail">Nombre
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Nombre del Contacto " id="demo-hor-inputemail"
+                                            class="form-control" name="nombre" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-apellido">Apellido :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Apellido del Contacto" id="demo-apellido"
+                                            class="form-control" name="apellido" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-dni">Dni :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Dni del Contacto " id="demo-dni"
+                                            class="form-control" name="dni" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="demo-msk-phone" class="col-sm-3 control-label">Telefono
+                                        :</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="demo-msk-phone" class="form-control"
+                                            placeholder="(999) 999-9999" name="telefono" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-correo">Correo :</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" placeholder="Correo del Contacto " id="demo-correo"
+                                            class="form-control" name="correo" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Tab timeline-->
+                        <div id="timeline" class="tab-pane fade">
+                            <p class="text-main text-semibold"></p>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-hor-inputemail">Nombre
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Nombre de ls Empresa " id="demo-hor-inputemail"
+                                            class="form-control" name="nombreEmp" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-direccion-Empresa">Direccion
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Direccion de la Empresa"
+                                            id="demo-direccion-Empresa" class="form-control" name="direccionEmp" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-ruc-Empresa">Ruc :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Ruc de la Empresa" id="demo-ruc-Empresa"
+                                            class="form-control" name="rucEmp" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-Telefono-Empresa">Telefono
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Telefono del Contacto"
+                                            id="demo-Telefono-Empresa" class="form-control" name="telefonoEmp" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="demo-correo-Empresa">correo
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Correo de la Empresa " id="demo-correo-Empresa"
+                                            class="form-control" name="correoEmp" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!--End Default Bootstrap Modal-->
+
+</form>
+<form action="/client/edit" method="post" class="form-horizontal" id="editClient">
+    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal animated lightSpeedIn" id="demo-editar-cliente" role="dialog" tabindex="-1"
+        aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i
+                            class="pci-cross pci-circle"></i></button>
+                    <h4 class="modal-title">Editar Usuario</h4>
+                </div>
+                <!--Modal body-->
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#activity" data-toggle="tab" aria-expanded="true"><i
+                                    class="demo-pli-male ml-5" style="padding: 0 10px 0 0;"></i>Contacto</a>
+                        </li>
+                        
+
+                    </ul>
+                    <!--Tabs Content-->
+                    <div class="tab-content">
+                        <!--Tab activity-->
+                        <div id="activity" class="tab-pane fade active in">
+                            <p class="text-main text-semibold"></p>
+                            <div class="panel-body">
+                                <div class="form-group hidden">
+                                    <label class="col-sm-3 control-label" for="id_edit">Id :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Ingrese Nombre" id="id_edit"
+                                            class="form-control" name="id_edit" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="id_nombre">Nombre
+                                        :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Nombre del Contacto " id="nombre_edit"
+                                            class="form-control" name="nombre_edit" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="apellido_edit">Apellido :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Apellido del Contacto" id="apellido_edit"
+                                            class="form-control" name="apellido_edit" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="dni_edit">Dni :</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" placeholder="Dni del Contacto " id="dni_edit"
+                                            class="form-control" name="dni_edit" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="telefono_edit">Telefono
+                                        :</label>
+                                    <div class="col-md-9">
+                                        <input type="text" placeholder="(999) 999-9999" id="telefono_edit" 
+                                           class="form-control" name="telefono_edit"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="correo_edit">Correo :</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" placeholder="Correo del Contacto " id="correo_edit"
+                                            class="form-control" name="correo_edit" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+
+                    </div>
+
+                </div>
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--===================================================-->
+    <!--End Default Bootstrap Modal-->
+
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap.min.js"></script>
+
+<script>
+    $("#example").DataTable({
+        responsive: true,
+        processing: true,
+        destroy: true,
+        ajax: {
+            url: "/data/table",
+            dataSrc: ""
+        },
+        columns: [
+            { data: "id" },
+            { data: "nombre" },
+            { data: "apellido" },
+            { data: "dni" },
+            { data: "telefono" },
+            { data: "correo" },
+            {
+                data: null,
+                render(data) {
+                    return (
+                        " <a  id='btnEditarCliente' data-target='' data-toggle='modal' "
+                        + " class='btn btn-primary add-tooltip demo-psi-pen-5 icon-lg' data-container='body' "
+                        + " data-placement='top' data-original-title='Editar' style='height: 34px;'> "
+                        + "</a>"
+                        + "|"
+                        + " <a onclick='confirmar(" + data.id + ")' class='btn btn-danger add-tooltip' data-toggle='tooltip' "
+                        + " data-container='body' data-placement='top' data-original-title='Eliminar'><i "
+                        + " class='demo-pli-trash icon-lg'></i>"
+                        + "</a>"
+
+
+                    );
+                },
+            },
+        ],
+
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        pageLength: 5,
+        lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
+    });
+
+    function confirmar(id) {
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡No podras revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Eliminar!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                window.location = '/client/delete/' + id;
+            }
+        })
+    }
+
+
+</script>

@@ -1,0 +1,290 @@
+<div class="panel">
+    <div class="panel-heading" style="margin-left: 15px;">
+        <button data-target="#demo-default-modal" data-toggle="modal" class="btn btn-primary"><i
+                class="demo-pli-add"></i>
+            Agregar
+        </button>
+    </div>
+    <!-- Foo Table - Filtering -->
+    <!--===================================================-->
+    <div class="panel-body">
+        <table id="demo-foo-filtering" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Grupo</th>
+                    <th>fecha</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                    {{! <th data-toggle="true">Acciones</th>
+                    <th data-hide="phone, tablet">Job Title</th>
+                    <th data-hide="phone, tablet">DOB</th>
+                    <th data-hide="phone, tablet">Status</th> }}
+                </tr>
+            </thead>
+            <div class="pad-btm form-inline">
+                <div class="row">
+                    <div class="col-sm-6 text-xs-center">
+                        <div class="form-group">
+                            <label class="control-label">Status</label>
+                            <select id="demo-foo-filter-status" class="form-control">
+                                <option value="">Show all</option>
+                                <option value="Active">Activo</option>
+                                <option value="Inactivo">Inactivo</option>
+                                <option value="Suspendido">Suspendido</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-xs-center text-right">
+                        <div class="form-group">
+                            <input id="demo-foo-search" type="text" placeholder="Search" class="form-control"
+                                autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <tbody>
+                {{#each listadata}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{nombre}}</td>
+                    <td>{{usuario}}</td>
+                    <td>{{correo}}</td>
+                    <td>{{permiso}}</td>
+                    <td>{{fecha}}</td>
+                    <td><span id="list-estado">{{estado}}</span></td>
+
+                    <td style="display:flex">
+                        <a  id="btnEditar" data-target="" data-toggle="modal"
+                            class="btn btn-primary add-tooltip demo-psi-pen-5 icon-lg" data-container="body"
+                            data-placement="top" data-original-title="Editar" style="height: 34px;">
+                        </a>
+                        |
+                        <form action="/user/delete/{{id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger add-tooltip " data-toggle="tooltip"
+                                data-container="body" data-placement="top" data-original-title="Eliminar" ><i
+                                    class="demo-pli-trash icon-lg"></i>
+                            </button>
+                        </form>
+
+                        
+                    </td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8">
+                        <div class="text-right">
+                            <ul class="pagination"></ul>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
+
+<form action="/user/add" method="post" class="form-horizontal">
+    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal animated lightSpeedIn" id="demo-default-modal" role="dialog" tabindex="-1"
+        aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i
+                            class="pci-cross pci-circle"></i></button>
+                    <h4 class="modal-title">Registro Usuario</h4>
+                </div>
+                <!--Modal body-->
+                <div class="modal-body">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="nombre_add">Nombre :</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Ingrese Nombre" id="nombre" class="form-control"
+                                    name="nombre" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="usuario_add">Usuario :</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Ingrese Usuario" id="usuario" class="form-control"
+                                    name="usuario" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="correo_add">Email :</label>
+                            <div class="col-sm-9">
+                                <input type="email" placeholder="Ingrese Email" id="email" class="form-control"
+                                    name="correo" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="permiso_add">Grupo Permiso
+                                :</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker" name="permiso" id="permiso">
+                                    <option value="">---Selecciona---</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Cajero">Cajero</option>
+                                    <option value="Secretario">Secretario</option>
+                                    <option value="Proveedor">Proveedor</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="estado_add">Estado :</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker" name="estado" id="estado">
+                                    <option value="">---Selecciona---</option>
+                                    <option value="Active">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                    <option value="Suspendido">Suspendido</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="demo-hor-contraseña">Contraseña :</label>
+                            <div class="col-sm-9">
+                                <input type="password" placeholder="Ingrese Contraseña" id="demo-hor-contraseña"
+                                    class="form-control" name="contraseña" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="repetir_add">Repetir
+                                Contraseña :</label>
+                            <div class="col-sm-9">
+                                <input type="password" placeholder="Repita Contraseña" id="repetir" class="form-control"
+                                    name="repetir" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnSave">GUARDAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form action="/user/update?_method=PUT" method="post" class="form-horizontal" id="editForm">
+  <input type="hidden" name="_method" value="PUT">
+
+    <!--Default Bootstrap Modal-->
+    <!--===================================================-->
+    <div class="modal animated lightSpeedIn" id="demo-editar-usuario" role="dialog" tabindex="-1"
+        aria-labelledby="demo-default-modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!--Modal header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><i
+                            class="pci-cross pci-circle"></i></button>
+                    <h4 class="modal-title">Editar Usuario</h4>
+                </div>
+                <!--Modal body-->
+                <div class="modal-body">
+                    <div class="panel-body">
+                         <div class="form-group hidden">
+                            <label class="col-sm-3 control-label" for="id_edit">Nombre :</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Ingrese Nombre" id="id_edit" class="form-control"
+                                    name="id_edit" />
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="nombre_edit">Nombre :</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Ingrese Nombre" id="nombre_edit" class="form-control"
+                                    name="nombre_edit" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="usuario_edit">Usuario :</label>
+                            <div class="col-sm-9">
+                                <input type="text" placeholder="Ingrese Usuario" id="usuario_edit" class="form-control"
+                                    name="usuario_edit" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="correo_edit">Email :</label>
+                            <div class="col-sm-9">
+                                <input type="email" placeholder="Ingrese Email" id="email_edit" class="form-control"
+                                    name="correo_edit" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="permiso_edit">Grupo
+                                Permiso :</label>
+                            <div class="col-sm-9">
+                                <select  class="selectpicker" name="permiso_edit" id="permiso_edit">
+                                    <option value="">---Selecciona---</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Cajero">Cajero</option>
+                                    <option value="Secretario">Secretario</option>
+                                    <option value="Proveedor">Proveedor</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="estado_edit">Estado :</label>
+                            <div class="col-sm-9">
+                                <select class="selectpicker" name="estado_edit" id="estado_edit">
+                                    <option value="">---Selecciona---</option>
+                                    <option value="Active">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                    <option value="Suspendido">Suspendido</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Modal footer-->
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="/js/jquery.min.js"></script>
+<script>
+    const estados = document.querySelectorAll("#list-estado");
+    estados.forEach(lista => {
+        if (lista.textContent == "Active") {
+            lista.classList.add("activado"); //class="label label-table label-success"
+        } else if (lista.textContent == "Suspendido") {
+            lista.classList.add("suspendido");
+        } else {
+            lista.classList.add("desactivado");
+        }
+    })
+
+    
+</script>
